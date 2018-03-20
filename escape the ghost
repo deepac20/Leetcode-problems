@@ -1,0 +1,24 @@
+class Solution(object):
+           
+    def escapeGhosts(self, ghosts, target):
+        """
+        :type ghosts: List[List[int]]
+        :type target: List[int]
+        :rtype: bool
+        """
+        def computeDistance(i,j,k,l):
+            if i == k: return abs(j-l)
+            elif j == l: return abs(i-k)
+            else: return abs(i-k)+abs(j-l)
+    
+        yourDistance = computeDistance(0,0,target[0],target[1])
+        ghostDistance = float('inf')
+        for i in range(len(ghosts)):
+            if ghosts[i][0] == 0 and ghosts[i][1] == 0: return False
+            ghostDistance = min(ghostDistance, computeDistance(ghosts[i][0], ghosts[i][1],target[0], target[1]))
+        if yourDistance >= ghostDistance: return False
+        else: return True
+        
+    
+        
+    
