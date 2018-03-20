@@ -1,0 +1,22 @@
+class Solution(object):
+    def allPathsSourceTarget(self, graph):
+        """
+        :type graph: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        all_paths,out = [], []
+        dest = len(graph)-1
+        for ind, node in enumerate(graph):
+            source = ind
+            for i in node:
+                path= []
+                path.append(source)
+                path.append(i)
+                all_paths.append(path)
+        for ind,p in enumerate(all_paths):
+            if p[0] == 0 and p[-1] == dest: out.append(p)
+            elif p[0] == 0:
+                for i in graph[p[-1]]:
+                    if i == dest: out.append(p + [i])
+                    else: all_paths.append(p+[i])    
+        return out
