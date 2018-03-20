@@ -1,0 +1,29 @@
+class Solution(object):
+    def validTicTacToe(self, board):
+        """
+        :type board: List[str]
+        :rtype: bool
+        """
+        count_x, count_o  = 0, 0
+        x_win, o_win = 0,0
+        for i in range(3):
+            for j in range(3):
+                if board[i][j] == 'X': count_x += 1
+                elif board[i][j] == 'O': count_o += 1
+                else: continue
+        if count_x - count_o > 1 or count_x - count_o < 0: 
+                print('from line 15')
+                return False
+        
+        for i in range(3):
+            if (board[i][0] == 'X' and board[i][1] == 'X' and board[i][2] == 'X') or (board[0][i] == 'X' and board[1][i] == 'X' and board[2][i] == 'X') or (board[0][0] == 'X' and board[1][1] == 'X' and board[2][2] == 'X') or (board[0][2] == 'X' and board[1][1] == 'X' and board[2][0] == 'X'): x_win = 1
+            if (board[i][0] == 'O' and board[i][1] == 'O' and board[i][2] == 'O') or (board[0][i] == 'O' and board[1][i] == 'O' and board[2][i] == 'O') or (board[0][0] == 'O' and board[1][1] == 'O' and board[2][2] == 'O') or (board[0][2] == 'O' and board[1][1] == 'O' and board[2][0] == 'O'): o_win = 1
+            
+            if x_win == 1 and o_win == 1: return False
+            elif (x_win == 1  and count_x > count_o): return True
+            elif (x_win == 1 and count_x <= count_o): return False
+            elif (o_win == 1 and count_x == count_o): return True
+            elif (o_win == 1 and count_x > count_o): return False
+        
+        return True
+        
