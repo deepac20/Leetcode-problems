@@ -1,0 +1,14 @@
+class Solution(object):
+    def replaceWords(self, dict, sentence):
+        """
+        :type dict: List[str]
+        :type sentence: str
+        :rtype: str
+        """
+        sentence = sentence.split(' ')
+        for ind,word in enumerate(sentence):
+            for root in dict:
+                if word.startswith(root):
+                    sentence[ind] = root
+                    break
+        return ' '.join(sentence)
