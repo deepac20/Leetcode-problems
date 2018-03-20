@@ -1,0 +1,19 @@
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        import operator
+        dict = {}
+        out= ''
+        for letter in s:
+            if letter in dict: dict[letter] += 1
+            else: dict[letter] = 1
+        sorted_dict = dict.items()
+        sorted_dict = sorted(sorted_dict, key=lambda tup: tup[1], reverse = True)
+        sorted_dict = map(list, sorted_dict)    
+        print(sorted_dict)
+        for i in range(len(dict)):
+            out += sorted_dict[i][0] * sorted_dict[i][1]
+        return out  
