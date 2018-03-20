@@ -1,0 +1,11 @@
+class Solution(object):
+    def minMoves(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        min_num = min(nums)
+        count=0
+        for i in nums:
+            count+=i-min_num
+        return count
