@@ -1,0 +1,26 @@
+class Solution(object):
+    def divide(self, dividend, divisor):
+        """
+        :type dividend: int
+        :type divisor: int
+        :rtype: int
+        """
+        if dividend == divisor : return 1
+        abs_dividend = abs(dividend)
+        abs_divisor = abs(divisor)
+        count = 0
+        while abs_dividend >= abs_divisor:
+            closest_to_dividend,steps = abs_divisor, 1
+            while abs_dividend >= closest_to_dividend:
+                closest_to_dividend = closest_to_dividend << 1
+                steps = steps << 1
+            closest_to_dividend = closest_to_dividend >> 1
+            steps = steps >> 1
+            abs_dividend = abs_dividend - closest_to_dividend
+            count = count + steps
+        if (dividend > 0 and divisor < 0) or (dividend < 0 and divisor > 0):
+            count = -count
+        if count >= 0: return min(count, 2147483647)
+        else : return max(count, -2147483648)
+        return count
+            
