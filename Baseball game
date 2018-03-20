@@ -1,0 +1,14 @@
+class Solution(object):
+    def calPoints(self, ops):
+        """
+        :type ops: List[str]
+        :rtype: int
+        """
+        valid_points = []
+        for i in ops:
+            if i[0] == '-' and i[1:].isnumeric: valid_points.append(i)
+            elif i.isnumeric(): valid_points.append(i)
+            elif i == 'C': valid_points = valid_points[:-1]
+            elif i == 'D': valid_points.append(str(2*int(valid_points[-1])))
+            elif i == '+': valid_points.append(str(int(valid_points[-1])+int(valid_points[-2])))
+        return sum(map(int,valid_points))
