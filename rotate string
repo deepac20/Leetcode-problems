@@ -1,0 +1,18 @@
+class Solution(object):
+    def rotateString(self, A, B):
+        """
+        :type A: str
+        :type B: str
+        :rtype: bool
+        """
+        if len(A) != len(B): return False
+        elif A == B: return True
+        else:
+            count = 0
+            while count != len(A):
+                if A == B:
+                    return True
+                else:
+                    A = A[1:] + A[0]
+                    count += 1
+        return False
