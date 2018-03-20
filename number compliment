@@ -1,0 +1,11 @@
+class Solution(object):
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        out = ''
+        bin_num = str(bin(num)[2:])
+        for i in map(int,bin_num):
+            out = out + '0' if i == 1 else out+'1' 
+        return int(out, 2)
