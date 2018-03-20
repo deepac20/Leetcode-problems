@@ -1,0 +1,22 @@
+class Solution(object):
+    def numSubarrayBoundedMax(self, A, L, R):
+        """
+        :type A: List[int]
+        :type L: int
+        :type R: int
+        :rtype: int
+        """
+        
+        out,dp = 0,0
+        prev_index = -1
+        for i in range(len(A)):
+            if A[i]< L and i > 0:
+                out += dp
+            elif A[i] > R:
+                dp = 0
+                prev_index = i
+            elif A[i] >= L and A[i] <= R:
+                dp = i - prev_index
+                out += dp
+        return out
+        
