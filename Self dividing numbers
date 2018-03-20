@@ -1,0 +1,20 @@
+class Solution(object):
+    def selfDividingNumbers(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: List[int]
+        """
+        res =[]
+        for i in range(left,right+1):
+            flag = 1
+            for digit in map(int,str(i)):
+                if digit == 0:
+                    flag = 0
+                    break
+                if i % digit != 0:
+                    flag = 0
+                    break
+            if flag == 1: res.append(i)
+        
+        return res
